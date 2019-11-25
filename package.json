@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@types/node": "^12.7.5",
+    "color": "^3.1.2"
+  }
+}
