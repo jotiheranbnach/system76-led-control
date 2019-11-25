@@ -1,6 +1,16 @@
 {
+  "name": "system76-led-control",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "sudo node ./dist/led-control.js randomRgb",
+    "build": "tsc"
+  },
+  "private": true,
   "dependencies": {
-    "@types/node": "^12.7.5",
     "color": "^3.1.2"
+  },
+  "devDependencies": {
+    "typescript": "~3.5.3",
+    "@types/node": "~8.9.4"
   }
 }

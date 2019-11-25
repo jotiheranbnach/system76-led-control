@@ -1,11 +1,11 @@
 var Color = require('color');
-class ColorController {
+class LedControl {
     constructor() {
         this.fs = require('fs');
         this.h = Math.random();
     }
     setBrightness(level) {
-        if (level > ColorController.MAX_BRIGHTNESS || level < ColorController.MIN_BRIGHTNESS) {
+        if (level > LedControl.MAX_BRIGHTNESS || level < LedControl.MIN_BRIGHTNESS) {
             throw new Error('Invalid brightness provided. Only values between 0 and 255 are allowed');
         }
         this.fs.writeFile('/sys/class/leds/system76::kbd_backlight/brightness', level, (err) => {
@@ -16,13 +16,13 @@ class ColorController {
     setState(hexcolor, section) {
         let file;
         switch (section) {
-            case ColorController.SECTION_LEFT:
+            case LedControl.SECTION_LEFT:
                 file = 'color_left';
                 break;
-            case ColorController.SECTION_CENTER:
+            case LedControl.SECTION_CENTER:
                 file = 'color_center';
                 break;
-            case ColorController.SECTION_RIGHT:
+            case LedControl.SECTION_RIGHT:
                 file = 'color_right';
                 break;
             default:
@@ -42,14 +42,14 @@ class ColorController {
             let hex = hsl.hex();
             return hex.substr(1);
         };
-        this.setState(getRandomColor(), ColorController.SECTION_LEFT);
-        this.setState(getRandomColor(), ColorController.SECTION_CENTER);
-        this.setState(getRandomColor(), ColorController.SECTION_RIGHT);
+        this.setState(getRandomColor(), LedControl.SECTION_LEFT);
+        this.setState(getRandomColor(), LedControl.SECTION_CENTER);
+        this.setState(getRandomColor(), LedControl.SECTION_RIGHT);
         setTimeout(() => {
             this.runRandomRgbAnimation();
         }, 1000);
     }
-    runBlackPulseAnimation() {
+    runRedWaveAnimation() {
         let config = {
             stepSize: 1,
             minBrightness: 0,
@@ -76,11 +76,11 @@ class ColorController {
                 pulse(config, section, currentBrightness, isIncreasing);
             }, 80);
         };
-        pulse(config, ColorController.SECTION_LEFT, 0, false);
-        pulse(config, ColorController.SECTION_CENTER, 25, false);
-        pulse(config, ColorController.SECTION_RIGHT, 50, true);
+        pulse(config, LedControl.SECTION_LEFT, 0, false);
+        pulse(config, LedControl.SECTION_CENTER, 25, false);
+        pulse(config, LedControl.SECTION_RIGHT, 50, true);
     }
-    runKnightRider() {
+    runUglyKnightRider() {
         let eyePos = 0;
         let red = 'ff0000';
         let black = '000000';
@@ -90,19 +90,19 @@ class ColorController {
                     throw new Error('Invalid eye position detected: ' + eyePos);
                 }
                 if (eyePos === 1 || eyePos === 3) {
-                    this.setState(black, ColorController.SECTION_LEFT);
-                    this.setState(red, ColorController.SECTION_CENTER);
-                    this.setState(black, ColorController.SECTION_RIGHT);
+                    this.setState(black, LedControl.SECTION_LEFT);
+                    this.setState(red, LedControl.SECTION_CENTER);
+                    this.setState(black, LedControl.SECTION_RIGHT);
                 }
                 if (eyePos === 0) {
-                    this.setState(red, ColorController.SECTION_LEFT);
-                    this.setState(black, ColorController.SECTION_CENTER);
-                    this.setState(black, ColorController.SECTION_RIGHT);
+                    this.setState(red, LedControl.SECTION_LEFT);
+                    this.setState(black, LedControl.SECTION_CENTER);
+                    this.setState(black, LedControl.SECTION_RIGHT);
                 }
                 if (eyePos === 2) {
-                    this.setState(black, ColorController.SECTION_LEFT);
-                    this.setState(black, ColorController.SECTION_CENTER);
-                    this.setState(red, ColorController.SECTION_RIGHT);
+                    this.setState(black, LedControl.SECTION_LEFT);
+                    this.setState(black, LedControl.SECTION_CENTER);
+                    this.setState(red, LedControl.SECTION_RIGHT);
                 }
             };
             colorizeKeyboardSection(eyePos);
@@ -127,18 +127,32 @@ class ColorController {
         swipe(eyePos);
     }
 }
-ColorController.SECTION_LEFT = 'left';
-ColorController.SECTION_CENTER = 'center';
-ColorController.SECTION_RIGHT = 'right';
-ColorController.MAX_BRIGHTNESS = 255;
-ColorController.MIN_BRIGHTNESS = 0;
+LedControl.SECTION_LEFT = 'left';
+LedControl.SECTION_CENTER = 'center';
+LedControl.SECTION_RIGHT = 'right';
+LedControl.MAX_BRIGHTNESS = 255;
+LedControl.MIN_BRIGHTNESS = 0;
 (() => {
-    let cc = new ColorController();
+    // Parse mode
+    const args = process.argv.slice(2);
+    if (args.length !== 1) {
+        throw new Error('No mode parameter provided.');
+    }
+    let lc = new LedControl();
     // Set the desired Brightness:
-    cc.setBrightness(ColorController.MAX_BRIGHTNESS);
-    // Run the Animation of your choice:
-    cc.runRandomRgbAnimation();
-    // cc.runBlackPulseAnimation();
-    // cc.runKnightRider();
+    lc.setBrightness(LedControl.MAX_BRIGHTNESS);
+    switch (args[0]) {
+        case 'randomRgb':
+            lc.runRandomRgbAnimation();
+            break;
+        case 'blackPulse':
+            lc.runRedWaveAnimation();
+            break;
+        case 'uglyKnightRider':
+            lc.runUglyKnightRider();
+            break;
+        default:
+            throw new Error('Unknown mode parameter provided.');
+    }
 })();
-//# sourceMappingURL=ColorController.js.map
+//# sourceMappingURL=led-control.js.map
