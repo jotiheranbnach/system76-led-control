@@ -1,6 +1,20 @@
 {
   "name": "system76-led-control",
   "version": "1.0.0",
+  "description": "A simple Node.js script for controlling the keyboard LED lights on the System76 laptops.",
+  "author": "Johann Tierbach <johann.tierbach@gmail.com>",
+  "license": "UNLICENCE <https://unlicense.org/>",
+  "keywords": [
+    "System76",
+    "LED",
+    "keyboard",
+    "rgb",
+    "animation",
+    "Oryx Pro",
+    "Adder WS",
+    "Pop!_OS"
+  ],
+  "private": true,
   "scripts": {
     "start": "sudo node ./dist/led-control.js randomRgb",
     "randomRgb": "sudo node ./dist/led-control.js randomRgb",
@@ -8,7 +22,6 @@
     "uglyKnightRider": "sudo node ./dist/led-control.js uglyKnightRider",
     "build": "tsc"
   },
-  "private": true,
   "dependencies": {
     "color": "^3.1.2"
   },

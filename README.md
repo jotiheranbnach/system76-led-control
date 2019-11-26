@@ -1,6 +1,5 @@
 # system76-led-control
-This is a simple Node.js script for controlling the keyboard LED lights on the
-System76 laptops.
+A simple Node.js script for controlling the keyboard LED lights on the System76 laptops.
 
 ## Supported Laptops
 - **(tested)** Oryx Pro 16" & Oryx Pro 17"
@@ -59,7 +58,7 @@ To get it up and running for development:
     npm install
     ```
 
-3. Now simply start the project with one of the prepared NPM scripts:
+3. Now simply run one of the prepared NPM scripts:
     ```bash
     npm run randomRgb
     ```
@@ -67,7 +66,8 @@ To get it up and running for development:
 
 The following vendors were used and earned my respect:
 
-- [Qix-/color](https://github.com/Qix-/color) - For easier color handling. Great lib!
+- [Qix-](https://github.com/Qix-) / [**color**](https://github.com/Qix-/color) - For easier color handling. Great lib!
+- [microsoft](https://github.com/microsoft) / [**TypeScript**](https://github.com/microsoft/TypeScript) - Because Typescript is ♥!
 
 ## Authors
 
@@ -75,7 +75,7 @@ The following vendors were used and earned my respect:
 
 ## License
 
-This project is unlicensed under the UNLICENCE Licence - see the [LICENSE.md](LICENSE.md) file or
+This project is unlicensed under the UNLICENCE Licence - see the [LICENSE.md](./LICENSE.md) file or
 [here](https://unlicense.org) for details.
 
 ## Acknowledgements
