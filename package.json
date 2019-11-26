@@ -1,7 +1,7 @@
 {
   "name": "system76-led-control",
   "version": "1.0.0",
-  "description": "A simple Node.js script for controlling the keyboard LED lights on the System76 laptops.",
+  "description": "A simple script for controlling the keyboard LED lights on the System76 laptops written in Node.js.",
   "author": "Johann Tierbach <johann.tierbach@gmail.com>",
   "license": "UNLICENCE <https://unlicense.org/>",
   "keywords": [

@@ -1,5 +1,5 @@
 # system76-led-control
-A simple Node.js script for controlling the keyboard LED lights on the System76 laptops.
+A simple script for controlling the keyboard LED lights on the System76 laptops written in Node.js.
 
 ## Supported Laptops
 - **(tested)** Oryx Pro 16" & Oryx Pro 17"
