@@ -1,4 +1,4 @@
-var Color = require('color');
+const Color = require('color');
 class LedControl {
     constructor() {
         this.fs = require('fs');

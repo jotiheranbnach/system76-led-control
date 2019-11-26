@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "sudo node ./dist/led-control.js randomRgb",
+    "randomRgb": "sudo node ./dist/led-control.js randomRgb",
+    "redWave": "sudo node ./dist/led-control.js redWave",
+    "uglyKnightRider": "sudo node ./dist/led-control.js uglyKnightRider",
     "build": "tsc"
   },
   "private": true,

@@ -1,4 +1,4 @@
-var Color = require('color');
+const Color = require('color');
 
 class LedControl {
     static SECTION_LEFT = 'left';
@@ -166,7 +166,7 @@ class LedControl {
         case 'randomRgb':
             lc.runRandomRgbAnimation();
             break;
-        case 'blackPulse':
+        case 'redWave':
             lc.runRedWaveAnimation();
             break;
         case 'uglyKnightRider':
