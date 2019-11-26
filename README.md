@@ -1,5 +1,5 @@
 # system76-led-control
-This is a simple Node.js script for controlling the keyboard LED lights of the
+This is a simple Node.js script for controlling the keyboard LED lights on the
 System76 laptops.
 
 ## Supported Laptops
@@ -8,7 +8,7 @@ System76 laptops.
 - Serval WS 15" & Serval WS 17"
 
 ## Features
-I put in some basic animations but honestly they are there just for showcasing how
+I put in some basic animations, but honestly they are there just for showcasing how
 to do the job on your own. Currently there are 3 **modes** which you can use to
 develop your own:
 - `randomRgb` Changes up the colors of the 3 keyboard sections more or less
@@ -37,11 +37,13 @@ versions.
 
 ### Installing
 (optional) If you want to get it up and running and are fine with the basic
-modes I provided you may install it globally and put in a cronjob to let it
-start on boot li this:
+modes I provided, you may install it globally and put in a cronjob to let it
+start on boot like this:
+
 ```bash
 
 ```
+
 To get it up and running for development:
 1. First open you CLI and go into the folder where you want to put the project
 (a folder will be created in the process). Then clone the repository:
@@ -65,7 +67,7 @@ To get it up and running for development:
 
 The following vendors were used and earned my respect:
 
-- [color](https://github.com/Qix-/color) - For the random rgb animation. Great lib!
+- [Qix-/color](https://github.com/Qix-/color) - For easier color handling. Great lib!
 
 ## Authors
 
